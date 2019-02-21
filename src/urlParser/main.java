@@ -8,9 +8,8 @@ import javax.swing.JOptionPane;
 public class Main {
 
 	public static void main(String[] args) {
-		
-		// creates a new Parser object with the URL inputed by the user
 		String url = JOptionPane.showInputDialog("Please enter a valid url:","");
+		// creates a new Parser object with the URL inputed by the user
 		Parser link_parser = new Parser(url);
 		try {
 			link_parser.create();

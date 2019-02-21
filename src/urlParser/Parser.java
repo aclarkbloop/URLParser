@@ -10,6 +10,8 @@ import java.util.HashMap;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
+import javax.swing.JOptionPane;
+
 public class Parser {
 	private String link;
 	private HashMap<String, Integer> word_holder;
@@ -52,20 +54,28 @@ public class Parser {
 	// print_most_frequent() prints the first 25 key pairs in the HashMap 
 	public void print_most_frequent() {
 		int counter = 1;
+		String output = "";
 		// if less than 25 entries, iterator.hasNext() should break the loop
 		for(Iterator<Map.Entry<String,Integer>> iterator 
 				 = sorted_word_holder.entrySet().iterator(); iterator.hasNext();) {
 			if (counter < 26) {
 				Entry<String, Integer> next_entry = iterator.next();
-				System.out.println(counter + ". " + next_entry.getKey() + " -> " + next_entry.getValue());
+				output += counter + ".   " + next_entry.getKey() + " -> " + next_entry.getValue() + "\n";
 				counter++;
 			} else {
 				break;
 			}
 		}
 		if (counter < 26) {
-			System.out.println("There were less than 25 words in the specified link");
+			output += "(There were less than 25 words on the specified page.)";
 		}
+		// creates UI that displays the output 
+		JOptionPane.showMessageDialog( 
+				null, "The 25 most frequent words on this page are:" + "\n" + output, 
+				"Results", JOptionPane.PLAIN_MESSAGE); 
+				System.exit(0);
+		
+		
 
 	}
 }

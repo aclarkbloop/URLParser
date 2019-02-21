@@ -1,17 +1,17 @@
 package urlParser;
-import java.util.HashMap;
 import java.io.IOException;
 import java.util.*;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
+import javax.swing.JOptionPane;
 
-public class main {
+
+public class Main {
 
 	public static void main(String[] args) {
-		Scanner scan = new Scanner(System.in);
+		
 		// creates a new Parser object with the URL inputed by the user
-		Parser link_parser = new Parser(scan.next());
+		String url = JOptionPane.showInputDialog("Please enter a valid url:","");
+		Parser link_parser = new Parser(url);
 		try {
 			link_parser.create();
 		} catch (IOException e) {

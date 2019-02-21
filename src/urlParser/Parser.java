@@ -24,10 +24,10 @@ public class Parser {
 	}
 	
 	/* create() assembles a document from the url specified and a String is created
-	 * from the text which is then converted to lowercase for uniformity's sake.
-	 * \ The individual words in the String are parsed, ommiting spaces and other "non-word"
+	 * from the text. The String is then converted to lower case for uniformity's sake.
+	 * The individual words in the String are parsed, omitting spaces and other "non-word"
 	 * characters, into an Array. This array is then traversed and each unique word is placed
-	 * as a key into a HashMap with its value being incrimented every time that word is found. 
+	 * as a key into a HashMap with its value being incremented every time that word is found. 
 	 */
 	public void create() throws IOException {
 		String words = Jsoup.connect(link).get().text().toLowerCase();
@@ -42,8 +42,7 @@ public class Parser {
 			}
 		}
 	}
-	// sort_by_frequency() arranges the HashMap word_holder in descending order of the mapped values 
-	 
+	// sort_by_frequency() arranges the HashMap 'word_holder' in descending order of the mapped values 
 	public void sort_by_frequency() {
 		sorted_word_holder = word_holder.entrySet()
         .stream()
@@ -51,11 +50,11 @@ public class Parser {
         .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
 	}
 	
-	// print_most_frequent() prints the first 25 key pairs in the HashMap 
+	// print_most_frequent() prints the first 25 key pairs in the HashMap. 
 	public void print_most_frequent() {
 		int counter = 1;
 		String output = "";
-		// if less than 25 entries, iterator.hasNext() should break the loop
+		// if less than 25 entries, iterator.hasNext() should break the loop.
 		for(Iterator<Map.Entry<String,Integer>> iterator 
 				 = sorted_word_holder.entrySet().iterator(); iterator.hasNext();) {
 			if (counter < 26) {
@@ -67,7 +66,7 @@ public class Parser {
 			}
 		}
 		if (counter < 26) {
-			output += "(There were less than 25 words on the specified page.)";
+			output += "(There are less than 25 words on the specified page.)";
 		}
 		// creates UI that displays the output 
 		JOptionPane.showMessageDialog( 

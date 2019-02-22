@@ -31,6 +31,8 @@ public class Parser {
 	 */
 	public void create() throws IOException {
 		String words = Jsoup.connect(link).get().text().toLowerCase();
+		// remove all stand alone apostrophes and other characters
+		words.replaceAll("^\\s*\'\\B|^\\B\'\\s*", "");
 		String[] word_array = words.split("[^a-z\']+");
 		for (int i = 0; i < word_array.length; i++) {
 			if (!word_holder.containsKey(word_array[i])) {

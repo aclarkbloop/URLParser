@@ -31,7 +31,7 @@ public class Parser {
 	 */
 	public void create() throws IOException {
 		String words = Jsoup.connect(link).get().text().toLowerCase();
-		String[] word_array = words.split("([^a-z']+)'*\\1*");
+		String[] word_array = words.split("[^a-z\']+");
 		for (int i = 0; i < word_array.length; i++) {
 			if (!word_holder.containsKey(word_array[i])) {
 				word_holder.put(word_array[i], 1);
